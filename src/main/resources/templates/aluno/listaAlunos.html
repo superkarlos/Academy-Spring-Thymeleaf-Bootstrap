@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Alunos</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <style>
+    h4 {
+      text-align: center;
+    }
+    .edit {
+      margin-top: 10px;
+      width: 100%;
+    }
+    .concluir {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      gap: 10%;
+    }
+    .add-bnt1 {
+      border-color: chartreuse;
+      color: chartreuse;
+    }
+    .add-bnt1:hover {
+      background-color: chartreuse;
+      color: rgb(0, 0, 0);
+    }
+    .add-bnt2 {
+      border-color: rgb(255, 0, 0);
+      color: rgb(255, 0, 0);
+    }
+    .add-bnt2:hover {
+      background-color: rgb(255, 0, 0);
+      color: rgb(0, 0, 0);
+    }
+  </style>
+  <body>
+    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+    <hr />
+
+    <div class="container">
+      <h3>Ultimos alunos adicionados</h3>
+      <hr />
+      <table class="table table-bordered table-hover">
+        <thead>
+          <th scope="col">NOME</th>
+          <th scope="col">CURSO</th>
+          <th scope="col">MATRICULA</th>
+          <th scope="col">STATUS</th>
+        </thead>
+        <tbody>
+          <tr scope="row" th:each="alunos : ${lista_alunos}">
+            <td th:text="${alunos.nome}"></td>
+            <td th:text="${alunos.curso}"></td>
+            <td th:text="${alunos.matricula}"></td>
+            <td th:text="${alunos.status}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>
