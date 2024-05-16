@@ -38,6 +38,16 @@
       background-color: rgb(255, 0, 0);
       color: rgb(0, 0, 0);
     }
+    .thead {
+      position: sticky;
+      top: 0;
+      background-color: #ff0000;
+    }
+
+    .tabela {
+      height: 600px;
+      overflow-y: scroll;
+    }
   </style>
   <body>
     <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
@@ -46,22 +56,41 @@
     <div class="container">
       <h3>Ultimos alunos adicionados no Academy</h3>
       <hr />
-      <table class="table table-bordered table-hover">
-        <thead>
-          <th scope="col">NOME</th>
-          <th scope="col">CURSO</th>
-          <th scope="col">MATRICULA</th>
-          <th scope="col">STATUS</th>
-        </thead>
-        <tbody>
-          <tr scope="row" th:each="alunos : ${lista_alunos}">
-            <td th:text="${alunos.nome}"></td>
-            <td th:text="${alunos.curso}"></td>
-            <td th:text="${alunos.matricula}"></td>
-            <td th:text="${alunos.status}"></td>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="tabela">
+        <table class="table table-bordered table-hover tabela">
+          <thead class="thead">
+            <th scope="col">NOME</th>
+            <th scope="col">CURSO</th>
+            <th scope="col">MATRICULA</th>
+            <th scope="col">STATUS</th>
+            <th scope="col">MODIFICAR</th>
+          </thead>
+          <tbody>
+            <tr scope="row" th:each="alunos : ${lista_alunos}">
+              <td th:text="${alunos.nome}"></td>
+              <td th:text="${alunos.curso}"></td>
+              <td th:text="${alunos.matricula}"></td>
+              <td th:text="${alunos.status}"></td>
+
+              <td>
+                <a
+                  th:href="@{alterar/{id}(id=${alunos.id})}"
+                  class="btn btn-primary"
+                >
+                  <i class="fas fa-edit"></i> EDITAR</a
+                >
+                <a
+                  th:href="@{excluir/{id}(id=${alunos.id})}"
+                  class="btn btn-danger"
+                >
+                  <i class="fas fa-times"></i>EXCLUIR</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>

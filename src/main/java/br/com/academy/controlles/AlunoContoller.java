@@ -34,7 +34,7 @@ public class AlunoContoller {
 
     @PostMapping("/insertAlunos")
     public ModelAndView cadastrarAluno( AlunoEntity aluno){
-        System.out.println("entroi");
+    aluno.setNome(aluno.getNome().toUpperCase());
     ModelAndView mv = new ModelAndView();
     mv.setViewName("redirect:/adicionados");
     repository.save(aluno);
@@ -49,18 +49,41 @@ public class AlunoContoller {
         return mv;
     }
 
-    @GetMapping("/deletar/{id}")
-   public ResponseEntity<Object> dEntity(@PathVariable(value = "id") Long id) throws Exception{
-    Optional<AlunoEntity> aluno = this.repository.findById(id);
+    @GetMapping("/alterar/{id}")
+    public ModelAndView alterar(@PathVariable ("id")  Long id){
+       
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("aluno/alterar");
+        Optional<AlunoEntity> optional=  this.repository.findById(id);
+        AlunoEntity aluno = optional.get();
+        mv.addObject("aluno", aluno);
 
-    if (aluno.isPresent()) {
-        this.repository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deletado");
-    } else {
-        throw new Exception("uo não encontrado");
+        return mv;
+        
     }
+
+    @PostMapping("/alterar")
+    public ModelAndView alterar( AlunoEntity aluno){
+    ModelAndView mv = new ModelAndView();
+    aluno.setNome(aluno.getNome().toUpperCase());
+    repository.save(aluno);
+    mv.setViewName("redirect:/adicionados");
+    return mv;
+    }
+
+
+
+    @GetMapping("/excluir/{id}")
+    public ModelAndView excluir(@PathVariable ("id")  Long id,AlunoEntity aluno){
+       ModelAndView mv = new ModelAndView();
+       repository.delete(aluno);
+       mv.setViewName("redirect:/adicionados");
+       return mv;
+           
+    }
+   
 }
 
 
 
-}
+

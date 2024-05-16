@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inserir Alunos</title>
+    <title>Alterar Alunos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
@@ -31,12 +31,15 @@
       color: rgb(0, 0, 0);
     }
     .add-bnt2 {
-      border-color: rgb(255, 0, 0);
+      border-color: rgba(255, 255, 255, 0.26);
       color: rgb(255, 0, 0);
     }
     .add-bnt2:hover {
       background-color: rgb(255, 0, 0);
       color: rgb(0, 0, 0);
+    }
+    .container{
+   background-color: #00000044;
     }
     
   </style>
@@ -45,9 +48,11 @@
     <hr />
 
     <div class="container tabela" style="margin-top: 50px">
-      <h4>+ Inserir aluno</h4>
+      <hr>
+      <h4>+ Alterar dados do aluno</h4>
       <hr />
-      <form method="post" action="insertAlunos" th:object="${aluno}">
+      <form method="post" action="/alterar" th:object="${aluno}">
+        <input type="hidden"  th:field ="*{id}">
         <div class="row">
           <div class="col-md-6 form-grup offset-md-3">
             <label>Nome:</label>
@@ -78,18 +83,13 @@
             <label>Matricula</label>
             <input
               type="text"
+             readonly="readonly"
               class="form-control color-red"
               th:field="*{matricula}"
               id="matricula"
             />
 
-            <button
-              type="button"
-              onclick="GerarMatriclula();"
-              class="btn btn-outline-primary edit"
-            >
-              gerar
-            </button>
+           
           </div>
         </div>
 
