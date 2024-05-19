@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class HomeControlles {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public ModelAndView index(){
         ModelAndView  mv = new ModelAndView();
         mv.setViewName("home/index");

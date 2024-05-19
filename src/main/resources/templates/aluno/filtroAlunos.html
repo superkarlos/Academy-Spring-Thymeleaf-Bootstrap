@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encontrar Alunos</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <style>
+    h4 {
+      text-align: center;
+    }
+    .edit {
+      margin-top: 10px;
+      width: 100%;
+    }
+    .concluir {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      gap: 10%;
+    }
+    .add-bnt1 {
+      border-color: chartreuse;
+      color: chartreuse;
+    }
+    .add-bnt1:hover {
+      background-color: chartreuse;
+      color: rgb(0, 0, 0);
+    }
+    .add-bnt2 {
+      border-color: rgb(255, 0, 0);
+      color: rgb(255, 0, 0);
+    }
+    .add-bnt2:hover {
+      background-color: rgb(255, 0, 0);
+      color: rgb(0, 0, 0);
+    }
+    .thead {
+      position: sticky;
+      top: 0;
+      background-color: #ff0000;
+    }
+
+    .tabela {
+      height: 600px;
+      overflow-y: scroll;
+    }
+    .alunos {
+      padding: 40px;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .card {
+      padding: 3px;
+    }
+    .card-img-top {
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+    <hr />
+
+    <div class="container">
+      <h3>Encontrar alunos</h3>
+
+      <hr />
+      <form method="post" action=""></form>
+      <div class="input-group  col=6 offset=3">
+        <input
+          type="text"
+          class="form-form"
+          placeholder="Busque um aluno aqui.."/>
+        <div class="input-group-append">
+          <button type="submit" class="bnt btn-outline-secondary">
+            Pesquisar
+          </button>
+        </div>
+      </div>
+      <hr />
+
+      <div class="row alunos">
+        <div class="card" style="width: 288px">
+          <a href="#">
+            <img class="card-img-top" alt="" src="/img/alunosativos.jpeg" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Ativos no Sistema</h5>
+            <p class="card-text">Busque aqui os alunos</p>
+            <a th:href="@{/ativos}" class="btn btn-outline-primary">Click aqui</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 288px">
+          <a href="#">
+            <img class="card-img-top" alt="" src="/img/alunosinativos.jpeg" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Inativos no Sistema</h5>
+            <p class="card-text">Busque aqui os alunos</p>
+            <a th:href="@{/inativos}" class="btn btn-outline-primary">Click aqui</a>
+          </div>
+        </div>
+        <div class="card" style="width: 288px">
+          <a href="#">
+            <img class="card-img-top" alt="" src="/img/alunoscancelados.jpeg" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Cancelados no Sistema</h5>
+            <p class="card-text">Busque aqui os alunos</p>
+            <a th:href="@{/cancelados}" class="btn btn-outline-primary">Click aqui</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 288px">
+          <a href="#">
+            <img class="card-img-top" alt="" src="/img/alunostrancados.jpeg" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Trancados  no Sistema</h5>
+            <p class="card-text">Busque aqui os alunos</p>
+            <a th:href="@{/trancados}" class="btn btn-outline-primary">Click aqui</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

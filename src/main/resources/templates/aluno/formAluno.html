@@ -38,24 +38,35 @@
       background-color: rgb(255, 0, 0);
       color: rgb(0, 0, 0);
     }
-    
+    .alerta_vermelho {
+      display: block;
+    }
   </style>
   <body>
-    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+    <header
+      th:replace="~{/fragmentos_001/fragmentos :: cabecario}
+    "
+    ></header>
     <hr />
 
     <div class="container tabela" style="margin-top: 50px">
       <h4>+ Inserir aluno</h4>
       <hr />
-      <form method="post" action="insertAlunos" th:object="${aluno}">
+
+      <form
+        method="post"
+        th:action="@{/insertAlunos}"
+        th:object="${aluno}"
+        autocomplete="off"
+      >
         <div class="row">
           <div class="col-md-6 form-grup offset-md-3">
+            <div class="alert alert-danger"role="alert" th:if="${#fields.hasErrors('nome')}">
+              <label class="validation-message" th:errors="*{nome}"> </label>
+            </div>
             <label>Nome:</label>
-            <input
-              type="text"
-              placeholder="Digite o nome do aluno"
-              class="form-control"
-              th:field="*{nome}"
+            <input  type="text" placeholder="Digite o nome do aluno" class="form-control"
+              th:field="*{nome}" id="floatingInputInvalid"  required minlength="5"  maxlength="32"
             />
           </div>
         </div>
@@ -63,7 +74,7 @@
         <div class="row">
           <div class="col-md-6 form-grup offset-md-3">
             <label>Selecione o curso:</label>
-            <select class="form-control" th:field="*{curso}">
+            <select class="form-control" th:field="*{curso}" >
               <option
                 th:each="curso : ${T(br.com.academy.enuns.Curso).values()}"
                 th:value="${curso}"
@@ -74,6 +85,13 @@
         </div>
 
         <div class="row">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            th:if="${#fields.hasErrors('matricula')}"
+          >
+            <label class="validation-message" th:errors="*{matricula}"> </label>
+          </div>
           <div class="col-md-6 form-grup offset-md-3">
             <label>Matricula</label>
             <input
@@ -81,6 +99,7 @@
               class="form-control color-red"
               th:field="*{matricula}"
               id="matricula"
+              required
             />
 
             <button

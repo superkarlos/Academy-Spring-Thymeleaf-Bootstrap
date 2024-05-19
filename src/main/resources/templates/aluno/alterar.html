@@ -52,16 +52,11 @@
       <h4>+ Alterar dados do aluno</h4>
       <hr />
       <form method="post" action="/alterar" th:object="${aluno}">
-        <input type="hidden"  th:field ="*{id}">
+      <input type="hidden"  th:field ="*{id}">
         <div class="row">
           <div class="col-md-6 form-grup offset-md-3">
             <label>Nome:</label>
-            <input
-              type="text"
-              placeholder="Digite o nome do aluno"
-              class="form-control"
-              th:field="*{nome}"
-            />
+            <input type="text" placeholder="Digite o nome do aluno" class="form-control" th:field="*{nome}" required minlength="5" />
           </div>
         </div>
 
@@ -70,8 +65,7 @@
             <label>Selecione o curso:</label>
             <select class="form-control" th:field="*{curso}">
               <option
-                th:each="curso : ${T(br.com.academy.enuns.Curso).values()}"
-                th:value="${curso}"
+                th:each="curso : ${T(br.com.academy.enuns.Curso).values()}" th:value="${curso}"
                 th:text="${curso}"
               ></option>
             </select>

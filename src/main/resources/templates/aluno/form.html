@@ -12,21 +12,19 @@
 
     <header  th:fragment = "cabecario">
       
-      <a th:href="@{/home}"  class="logo-img">  <img class="logoacademy" src="/img/logoacademy.png" alt=""></a>
+      <a th:href="@{/}"  class="logo-img">  <img class="logoacademy" src="/img/logoacademy.png" alt=""></a>
     
    
       <nav class="nav-header">
-        <li><a th:href="@{/home}">Home</a></li>
+        <li><a href="#">Home</a></li>
         <li><a th:href="@{/inserirAlunos}">Cadastrar aluno</a></li>
-        <li><a th:href="@{/filtro}">Pesquisar</a></li>
+        <li><a href="#">Pesquisar</a></li>
         <li><a href="#" class="sair">Sair</a></li>
       </nav>
-
-
       <div class="button"> 
         <img src="/img/iconmenu.png"  width="50px" alt="">
         <nav class="nav-header-560px">
-          <li><a th:href="@{/home}">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a th:href="@{/inserirAlunos}">Cadastrar</a></li>
           <li><a href="#">Pesquisar</a></li>
           <li><a href="#" class="sair">Sair</a></li>
@@ -34,7 +32,20 @@
       </div>
       </div>  
     </header>
+               
+       
+
+
+    <form method="post" action="/form" th:object="${aluno}">
     
+      <input type="text"  th:field ="*{id}">
+      <input type="text"  th:field ="*{nome}">
+      <input type="text"  th:field ="*{Matricula}">
+      <button type="submit"> click</button>
+        
+    </form>
+
+
     <footer th:fragment ="footer">
       <p> @copy criado por josé carlos no dia 15/05/2024</p>
     </footer>
