@@ -187,3 +187,19 @@ footer {
   background: #a3a1a1;
   color: rgb(0, 0, 0);
 }
+footer {
+  background-color: #f8f9fa;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  margin: 0px auto;
+}
+
+footer p {
+  margin: 0;
+}

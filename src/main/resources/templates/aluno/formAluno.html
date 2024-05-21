@@ -49,6 +49,7 @@
     ></header>
     <hr />
 
+   <main>
     <div class="container tabela" style="margin-top: 50px">
       <h4>+ Inserir aluno</h4>
       <hr />
@@ -66,7 +67,7 @@
             </div>
             <label>Nome:</label>
             <input  type="text" placeholder="Digite o nome do aluno" class="form-control"
-              th:field="*{nome}" id="floatingInputInvalid"  required minlength="5"  maxlength="32"
+              th:field="*{nome}" id="floatingInputInvalid"  required minlength="5"  maxlength="32" 
             />
           </div>
         </div>
@@ -128,15 +129,16 @@
           <button type="submit" class="btn btn-outline-success add-bnt1">
             Enviar
           </button>
-          <button type="button" class="btn btn-outline-danger add-bnt2">
-            Sair
-          </button>
+         
+          <a  th:href="@{/home} " class="btn btn-outline-danger add-bnt2">Sair</a>
         </div>
       </form>
 
-      <hr />
+      
     </div>
-
+   </main>
+   <hr />
+    <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
     <script>
       function GerarMatriclula() {
         var txt = "ACA";

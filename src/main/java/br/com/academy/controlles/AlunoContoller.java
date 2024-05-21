@@ -1,18 +1,22 @@
 package br.com.academy.controlles;
 
 import java.util.Optional;
+import java.util.List;
+
 
 import org.hibernate.query.results.Builders;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -175,13 +179,39 @@ public class AlunoContoller implements WebMvcConfigurer {
     @GetMapping("/trancados")
     public ModelAndView listagemAlunosTrancados(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("aluno/cancelados");
+        mv.setViewName("aluno/trancados");
        mv.addObject("lista_alunos", repository.findByStatusTrancados());
       System.out.println(repository.findByStatusAtivos());
         return mv;
     }
-       
     
+    @GetMapping("/encontrar")
+    public ModelAndView encontrar(Model model) {
+        ModelAndView mv = new ModelAndView();
+       /// model.addAttribute("aluno", new AlunoEntity());
+        mv.setViewName("aluno/encontrar");
+        return mv;
+        
+    }
+    
+   
+    @PostMapping("/encontrar")
+public ModelAndView listagemEncontrtados(@RequestParam(required = false) String nome){
+   
+    ModelAndView mv = new ModelAndView();
+    if (nome == null || nome.trim().isEmpty()){
+        mv.addObject("error", "Nome não pode ser vazio");
+        mv.setViewName("");
+        return mv;
+     }
+    List<AlunoEntity> lista = this.repository.findByNomeContainingIgnoreCase(nome);
+    System.out.println(nome + "chegou aqui"); // Isso imprimirá o valor de 'nome' no console do servidor
+    mv.addObject("lista",lista);
+  //  mv.addObject(nome);
+    mv.setViewName("aluno/pesquisaPorNome");
+    return mv;
+}
+
 
 }
 

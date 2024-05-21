@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <style>
-    h4 {
+    h3 {
       text-align: center;
     }
     .edit {
@@ -59,6 +59,30 @@
     .card-img-top {
       padding: 10px;
     }
+
+    input[type="text"] {
+      width: 600px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .add-bnt01 {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add-bnt01:hover {
+      background-color: #0056b3;
+    }
+    .ajustes {
+      margin-left: 25%;
+    }
   </style>
   <body>
     <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
@@ -68,61 +92,67 @@
       <h3>Encontrar alunos</h3>
 
       <hr />
-      <form method="post" action=""></form>
-      <div class="input-group  col=6 offset=3">
-        <input
-          type="text"
-          class="form-form"
-          placeholder="Busque um aluno aqui.."/>
-        <div class="input-group-append">
-          <button type="submit" class="bnt btn-outline-secondary">
-            Pesquisar
-          </button>
-        </div>
+      <div class="ajustes">
+        <form method="post" th:action="@{/encontrar}">
+          <input
+            type="text"
+            th:name="nome"
+            placeholder="Digite o nome ou sobrenome do aluno"
+            required
+          />
+          <button type="submit" class="add-bnt01">pesquisar</button>
+        </form>
       </div>
+
       <hr />
 
       <div class="row alunos">
         <div class="card" style="width: 288px">
-          <a href="#">
+          <a th:href="@{/ativos}">
             <img class="card-img-top" alt="" src="/img/alunosativos.jpeg" />
           </a>
           <div class="card-body">
-            <h5 class="card-title">Ativos no Sistema</h5>
+            <h5 class="card-title">Alunos ativos no sistema</h5>
             <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/ativos}" class="btn btn-outline-primary">Click aqui</a>
+            <a th:href="@{/ativos}" class="btn btn-outline-primary">Ativos</a>
           </div>
         </div>
 
         <div class="card" style="width: 288px">
-          <a href="#">
+          <a th:href="@{/inativos}">
             <img class="card-img-top" alt="" src="/img/alunosinativos.jpeg" />
           </a>
           <div class="card-body">
-            <h5 class="card-title">Inativos no Sistema</h5>
+            <h5 class="card-title">Alunos inativos no sistema</h5>
             <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/inativos}" class="btn btn-outline-primary">Click aqui</a>
+            <a th:href="@{/inativos}" class="btn btn-outline-primary">
+              Inativos</a
+            >
           </div>
         </div>
         <div class="card" style="width: 288px">
-          <a href="#">
+          <a th:href="@{/cancelados}">
             <img class="card-img-top" alt="" src="/img/alunoscancelados.jpeg" />
           </a>
           <div class="card-body">
             <h5 class="card-title">Cancelados no Sistema</h5>
             <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/cancelados}" class="btn btn-outline-primary">Click aqui</a>
+            <a th:href="@{/cancelados}" class="btn btn-outline-primary"
+              >Cancelados</a
+            >
           </div>
         </div>
 
         <div class="card" style="width: 288px">
-          <a href="#">
+          <a th:href="@{/trancados}">
             <img class="card-img-top" alt="" src="/img/alunostrancados.jpeg" />
           </a>
           <div class="card-body">
-            <h5 class="card-title">Trancados  no Sistema</h5>
+            <h5 class="card-title">Trancados no sistema</h5>
             <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/trancados}" class="btn btn-outline-primary">Click aqui</a>
+            <a th:href="@{/trancados}" class="btn btn-outline-primary"
+              >Trancados
+            </a>
           </div>
         </div>
       </div>

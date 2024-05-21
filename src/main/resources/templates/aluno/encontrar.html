@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encontrar Alunos</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <style>
+    h3 {
+      text-align: center;
+    }
+   .container{
+    padding: 150px;
+   }
+
+
+    form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 600px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-bnt01 {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-bnt01:hover {
+    background-color: #0056b3;
+}
+.bntpesquisa{
+  width: 100px;
+  margin-left: 10px;
+  background-color: #ec0909;
+  color: #ccc;
+}
+.bntpesquisa:hover{
+  transform: translate(0);
+  box-shadow: none;
+  background-color: #581e1e;
+}
+  </style>
+  <body>
+    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+    <hr />
+
+   <main>
+    <div class="container">
+      <h3>DIGITE O NOME OU SOBRENOME DO ALUNO</h3>
+
+      <hr />
+      <form method="post" th:action="@{/encontrar}">
+        <input type="text"  th:name="nome" placeholder="Digite o nome ou sobrenome do aluno" required >
+        <button type="submit" class="add-bnt01 ">pesquisar</button>
+        <a  th:href="@{/home} " class="btn btn-outline-danger bntpesquisa">Sair</a>
+      </form>
+      <hr />
+   </main>
+      <hr/>
+      <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

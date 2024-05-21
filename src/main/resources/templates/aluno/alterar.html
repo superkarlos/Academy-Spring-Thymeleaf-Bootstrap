@@ -47,70 +47,78 @@
     <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
     <hr />
 
-    <div class="container tabela" style="margin-top: 50px">
+      <main>
+        <div class="container tabela" style="margin-top: 50px">
+          <hr>
+          <h4>+ Alterar dados do aluno</h4>
+          <hr />
+          <form method="post" action="/alterar" th:object="${aluno}">
+          <input type="hidden"  th:field ="*{id}">
+            <div class="row">
+              <div class="col-md-6 form-grup offset-md-3">
+                <label>Nome:</label>
+                <input type="text" placeholder="Digite o nome do aluno" class="form-control" th:field="*{nome}" required minlength="5" />
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-6 form-grup offset-md-3">
+                <label>Selecione o curso:</label>
+                <select class="form-control" th:field="*{curso}">
+                  <option
+                    th:each="curso : ${T(br.com.academy.enuns.Curso).values()}" th:value="${curso}"
+                    th:text="${curso}"
+                  ></option>
+                </select>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-6 form-grup offset-md-3">
+                <label>Matricula</label>
+                <input
+                  type="text"
+                 readonly="readonly"
+                  class="form-control color-red"
+                  th:field="*{matricula}"
+                  id="matricula"
+                />
+    
+               
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-6 form-grup offset-md-3">
+                <label>Selecione o Status:</label>
+                <select class="form-control" th:field="*{status}">
+                  <option
+                    th:each="status : ${T(br.com.academy.enuns.Status).values()}"
+                    th:value="${status}"
+                    th:text="${status}"
+                  ></option>
+                </select>
+              </div>
+            </div>
+            <div class="concluir">
+              <button type="submit" class="btn btn-outline-success add-bnt1">
+                Enviar
+              </button>
+              <button type="button" class="btn btn-outline-danger add-bnt2">
+                Sair
+              </button>
+            </div>
+          </form>
+    
+          <hr>
+       
+        </div>
+      </div>
+      </main>
       <hr>
-      <h4>+ Alterar dados do aluno</h4>
-      <hr />
-      <form method="post" action="/alterar" th:object="${aluno}">
-      <input type="hidden"  th:field ="*{id}">
-        <div class="row">
-          <div class="col-md-6 form-grup offset-md-3">
-            <label>Nome:</label>
-            <input type="text" placeholder="Digite o nome do aluno" class="form-control" th:field="*{nome}" required minlength="5" />
-          </div>
-        </div>
+      <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
 
-        <div class="row">
-          <div class="col-md-6 form-grup offset-md-3">
-            <label>Selecione o curso:</label>
-            <select class="form-control" th:field="*{curso}">
-              <option
-                th:each="curso : ${T(br.com.academy.enuns.Curso).values()}" th:value="${curso}"
-                th:text="${curso}"
-              ></option>
-            </select>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-md-6 form-grup offset-md-3">
-            <label>Matricula</label>
-            <input
-              type="text"
-             readonly="readonly"
-              class="form-control color-red"
-              th:field="*{matricula}"
-              id="matricula"
-            />
-
-           
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 form-grup offset-md-3">
-            <label>Selecione o Status:</label>
-            <select class="form-control" th:field="*{status}">
-              <option
-                th:each="status : ${T(br.com.academy.enuns.Status).values()}"
-                th:value="${status}"
-                th:text="${status}"
-              ></option>
-            </select>
-          </div>
-        </div>
-        <div class="concluir">
-          <button type="submit" class="btn btn-outline-success add-bnt1">
-            Enviar
-          </button>
-          <button type="button" class="btn btn-outline-danger add-bnt2">
-            Sair
-          </button>
-        </div>
-      </form>
-
-      <hr />
-    </div>
 
     <script>
       function GerarMatriclula() {
