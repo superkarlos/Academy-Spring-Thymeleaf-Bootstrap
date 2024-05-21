@@ -1,5 +1,7 @@
 # Sistema de Gerenciamento de Alunos
 
+##OBS: Ao inicar a aplicão cadastre novos usuarios.
+
   ![image](https://github.com/superkarlos/Academy-Spring-Thymeleaf-Bootstrap/assets/50372440/67824701-db94-46a8-bb66-15daa0d5769e)
 
    
