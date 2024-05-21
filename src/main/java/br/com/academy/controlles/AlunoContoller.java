@@ -197,15 +197,19 @@ public class AlunoContoller implements WebMvcConfigurer {
    
     @PostMapping("/encontrar")
 public ModelAndView listagemEncontrtados(@RequestParam(required = false) String nome){
+
+    String nome_ = nome.replaceAll("\\s+", "");
+    System.out.println(nome_);
+    System.err.println(nome);
    
     ModelAndView mv = new ModelAndView();
-    if (nome == null || nome.trim().isEmpty()){
+    if (nome_ == null || nome_.trim().isEmpty()){
         mv.addObject("error", "Nome não pode ser vazio");
         mv.setViewName("");
         return mv;
      }
-    List<AlunoEntity> lista = this.repository.findByNomeContainingIgnoreCase(nome);
-    System.out.println(nome + "chegou aqui"); // Isso imprimirá o valor de 'nome' no console do servidor
+    List<AlunoEntity> lista = this.repository.findByNomeContainingIgnoreCase(nome_);
+    
     mv.addObject("lista",lista);
   //  mv.addObject(nome);
     mv.setViewName("aluno/pesquisaPorNome");

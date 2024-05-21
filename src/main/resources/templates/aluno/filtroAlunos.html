@@ -93,13 +93,8 @@
 
       <hr />
       <div class="ajustes">
-        <form method="post" th:action="@{/encontrar}">
-          <input
-            type="text"
-            th:name="nome"
-            placeholder="Digite o nome ou sobrenome do aluno"
-            required
-          />
+        <form method="post" th:action="@{/encontrar}" id="meuForm">
+          <input type="text"  th:name="nome" placeholder="Digite o nome ou sobrenome do aluno" required id="nome"  minlength="1">
           <button type="submit" class="add-bnt01">pesquisar</button>
         </form>
       </div>
@@ -160,5 +155,16 @@
 
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+    <script>
+      document.getElementById('meuForm').addEventListener('submit', function(event) {
+        var nome = document.getElementById('nome').value;
+     
+      
+        if (nome.trim() === '') {
+          event.preventDefault();
+          alert('Por favor, preencha os campos sem espaços em branco.');
+        }
+      });
+      </script>
   </body>
 </html>

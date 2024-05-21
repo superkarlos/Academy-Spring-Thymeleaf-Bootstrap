@@ -63,8 +63,8 @@ input[type="text"] {
       <h3>DIGITE O NOME OU SOBRENOME DO ALUNO</h3>
 
       <hr />
-      <form method="post" th:action="@{/encontrar}">
-        <input type="text"  th:name="nome" placeholder="Digite o nome ou sobrenome do aluno" required >
+      <form method="post" th:action="@{/encontrar}" id="meuForm">
+        <input type="text"  th:name="nome" placeholder="Digite o nome ou sobrenome do aluno" required id="nome"  minlength="1">
         <button type="submit" class="add-bnt01 ">pesquisar</button>
         <a  th:href="@{/home} " class="btn btn-outline-danger bntpesquisa">Sair</a>
       </form>
@@ -72,6 +72,18 @@ input[type="text"] {
    </main>
       <hr/>
       <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
+
+      <script>
+        document.getElementById('meuForm').addEventListener('submit', function(event) {
+          var nome = document.getElementById('nome').value;
+         
+        
+          if (nome.trim() === '') {
+            event.preventDefault();
+            alert('Por favor, preencha os campos com pelo menos uma letra.');
+          }
+        });
+        </script>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/bootstrap.min.js"></script>
   </body>
