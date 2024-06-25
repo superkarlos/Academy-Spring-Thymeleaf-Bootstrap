@@ -18,5 +18,8 @@ public class HomeControlles {
         mv.addObject("aluno", new AlunoEntity());
         return mv;
     }
-    
+    @GetMapping("/")
+    public String ini(){
+        return "/home";
+    }
 }
