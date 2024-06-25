@@ -19,7 +19,10 @@ public class HomeControlles {
         return mv;
     }
     @GetMapping("/")
-    public String ini(){
-        return "/home";
+    public ModelAndView  ini(){
+        ModelAndView  mv = new ModelAndView();
+        mv.setViewName("redirect:/home");
+        mv.addObject("aluno", new AlunoEntity());
+        return mv;
     }
 }

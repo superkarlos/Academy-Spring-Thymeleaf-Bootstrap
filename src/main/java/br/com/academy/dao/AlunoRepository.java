@@ -21,6 +21,7 @@ public interface AlunoRepository  extends JpaRepository<AlunoEntity,Long>{
     public List<AlunoEntity> findByStatusCancelados();
 
     public List<AlunoEntity> findByNomeContainingIgnoreCase(String nome);
+    
     public String findByNome(String nome);
 }
 
