@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Academy</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academy</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 
-    <header  th:fragment = "cabecario">
-      
-      <a th:href="@{/home}"  class="logo-img">  <img class="logoacademy" src="/img/logoacademy.png" alt=""></a>
-    
-   
-      <nav class="nav-header">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+  <header th:fragment="cabecario">
+
+    <a th:href="@{/home}" class="logo-img"> <img class="logoacademy" src="/img/logoacademy.png" alt=""></a>
+
+
+    <nav class="nav-header">
+      <li><a th:href="@{/home}">Home</a></li>
+      <li><a th:href="@{/inserirAlunos}">Cadastrar aluno</a></li>
+      <li><a th:href="@{/encontrar}">Pesquisar</a></li>
+      <li><a href="#" class="sair">Sair</a></li>
+    </nav>
+
+
+    <div class="button">
+      <img src="/img/iconmenu.png" width="50px" alt="">
+      <nav class="nav-header-560px">
         <li><a th:href="@{/home}">Home</a></li>
-        <li><a th:href="@{/inserirAlunos}">Cadastrar aluno</a></li>
-        <li><a th:href="@{/encontrar}">Pesquisar</a></li>
+        <li><a th:href="@{/inserirAlunos}">Cadastrar</a></li>
+        <li><a href="#">Pesquisar</a></li>
         <li><a href="#" class="sair">Sair</a></li>
       </nav>
+    </div>
+    </div>
+  </header>
+
+  <footer th:fragment="footer">
+    <p> @copy criado por josé carlos no dia 15/05/2024</p>
+  </footer>
 
 
-      <div class="button"> 
-        <img src="/img/iconmenu.png"  width="50px" alt="">
-        <nav class="nav-header-560px">
-          <li><a th:href="@{/home}">Home</a></li>
-          <li><a th:href="@{/inserirAlunos}">Cadastrar</a></li>
-          <li><a href="#">Pesquisar</a></li>
-          <li><a href="#" class="sair">Sair</a></li>
-        </nav>
-      </div>
-      </div>  
-    </header>
-    
-    <footer th:fragment ="footer">
-      <p> @copy criado por josé carlos no dia 15/05/2024</p>
-    </footer>
-   
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+</body>
 
-    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
-  </body>
 </html>

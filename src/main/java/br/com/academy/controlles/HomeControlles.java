@@ -12,15 +12,16 @@ import br.com.academy.model.AlunoEntity;
 public class HomeControlles {
 
     @GetMapping("/home")
-    public ModelAndView index(){
-        ModelAndView  mv = new ModelAndView();
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("home/index");
         mv.addObject("aluno", new AlunoEntity());
         return mv;
     }
+
     @GetMapping("/")
-    public ModelAndView  ini(){
-        ModelAndView  mv = new ModelAndView();
+    public ModelAndView ini() {
+        ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:/home");
         mv.addObject("aluno", new AlunoEntity());
         return mv;

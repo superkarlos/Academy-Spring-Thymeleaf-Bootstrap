@@ -1,135 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alterar Alunos</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <style>
-    h4 {
-      text-align: center;
-    }
-    .edit {
-      margin-top: 10px;
-      width: 100%;
-    }
-    .concluir {
-      margin: 20px auto;
-      display: flex;
-      justify-content: center;
-      width: 50%;
-      gap: 10%;
-    }
-    .add-bnt1 {
-      border-color: chartreuse;
-      color: chartreuse;
-    }
-    .add-bnt1:hover {
-      background-color: chartreuse;
-      color: rgb(0, 0, 0);
-    }
-    .add-bnt2 {
-      border-color: rgba(255, 255, 255, 0.26);
-      color: rgb(255, 0, 0);
-    }
-    .add-bnt2:hover {
-      background-color: rgb(255, 0, 0);
-      color: rgb(0, 0, 0);
-    }
-    .container{
-   background-color: #00000044;
-    }
-    
-  </style>
-  <body>
-    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
-    <hr />
 
-      <main>
-        <div class="container tabela" style="margin-top: 50px">
-          <hr>
-          <h4>+ Alterar dados do aluno</h4>
-          <hr />
-          <form method="post" action="/alterar" th:object="${aluno}">
-          <input type="hidden"  th:field ="*{id}">
-            <div class="row">
-              <div class="col-md-6 form-grup offset-md-3">
-                <label>Nome:</label>
-                <input type="text" placeholder="Digite o nome do aluno" class="form-control" th:field="*{nome}" required minlength="5" />
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-md-6 form-grup offset-md-3">
-                <label>Selecione o curso:</label>
-                <select class="form-control" th:field="*{curso}">
-                  <option
-                    th:each="curso : ${T(br.com.academy.enuns.Curso).values()}" th:value="${curso}"
-                    th:text="${curso}"
-                  ></option>
-                </select>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-md-6 form-grup offset-md-3">
-                <label>Matricula</label>
-                <input
-                  type="text"
-                 readonly="readonly"
-                  class="form-control color-red"
-                  th:field="*{matricula}"
-                  id="matricula"
-                />
-    
-               
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-md-6 form-grup offset-md-3">
-                <label>Selecione o Status:</label>
-                <select class="form-control" th:field="*{status}">
-                  <option
-                    th:each="status : ${T(br.com.academy.enuns.Status).values()}"
-                    th:value="${status}"
-                    th:text="${status}"
-                  ></option>
-                </select>
-              </div>
-            </div>
-            <div class="concluir">
-              <button type="submit" class="btn btn-outline-success add-bnt1">
-                Enviar
-              </button>
-              <button type="button" class="btn btn-outline-danger add-bnt2">
-                Sair
-              </button>
-            </div>
-          </form>
-    
-          <hr>
-       
-        </div>
-      </div>
-      </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alterar Alunos</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<style>
+  h4 {
+    text-align: center;
+  }
+
+  .edit {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .concluir {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    gap: 10%;
+  }
+
+  .add-bnt1 {
+    border-color: chartreuse;
+    color: chartreuse;
+  }
+
+  .add-bnt1:hover {
+    background-color: chartreuse;
+    color: rgb(0, 0, 0);
+  }
+
+  .add-bnt2 {
+    border-color: rgba(255, 255, 255, 0.26);
+    color: rgb(255, 0, 0);
+  }
+
+  .add-bnt2:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+  }
+
+  .container {
+    background-color: #00000044;
+  }
+</style>
+
+<body>
+  <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+  <hr />
+
+  <main>
+    <div class="container tabela" style="margin-top: 50px">
       <hr>
-      <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
+      <h4>+ Alterar dados do aluno</h4>
+      <hr />
+      <form method="post" action="/alterar" th:object="${aluno}">
+        <input type="hidden" th:field="*{id}">
+        <div class="row">
+          <div class="col-md-6 form-grup offset-md-3">
+            <label>Nome:</label>
+            <input type="text" placeholder="Digite o nome do aluno" class="form-control" th:field="*{nome}" required
+              minlength="5" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-grup offset-md-3">
+            <label>Selecione o curso:</label>
+            <select class="form-control" th:field="*{curso}">
+              <option th:each="curso : ${T(br.com.academy.enuns.Curso).values()}" th:value="${curso}"
+                th:text="${curso}"></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-grup offset-md-3">
+            <label>Matricula</label>
+            <input type="text" readonly="readonly" class="form-control color-red" th:field="*{matricula}"
+              id="matricula" />
+
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-grup offset-md-3">
+            <label>Selecione o Status:</label>
+            <select class="form-control" th:field="*{status}">
+              <option th:each="status : ${T(br.com.academy.enuns.Status).values()}" th:value="${status}"
+                th:text="${status}"></option>
+            </select>
+          </div>
+        </div>
+        <div class="concluir">
+          <button type="submit" class="btn btn-outline-success add-bnt1">
+            Enviar
+          </button>
+          <button type="button" class="btn btn-outline-danger add-bnt2">
+            Sair
+          </button>
+        </div>
+      </form>
+
+      <hr>
+
+    </div>
+    </div>
+  </main>
+  <hr>
+  <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
 
 
 
-    <script>
-      function GerarMatriclula() {
-        var txt = "ACA";
-        var numeros = Math.floor(Math.random() * 1500);
-        var num = Math.floor(Math.random() * 9999);
-        document.getElementById("matricula").value = txt + numeros + num;
-      }
-    </script>
+  <script>
+    function GerarMatriclula() {
+      var txt = "ACA";
+      var numeros = Math.floor(Math.random() * 1500);
+      var num = Math.floor(Math.random() * 9999);
+      document.getElementById("matricula").value = txt + numeros + num;
+    }
+  </script>
 
-    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
-  </body>
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+</body>
+
 </html>

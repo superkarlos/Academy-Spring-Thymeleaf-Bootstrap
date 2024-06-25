@@ -66,7 +66,6 @@
             <th scope="col">STATUS</th>
             <th scope="col">id</th>
             <th scope="col">MODIFICAR</th>
-      
           </thead>
           <tbody>
             <tr scope="row" th:each="aluno : ${lista_alunos}">
@@ -89,14 +88,13 @@
                 >
                   <i class="fas fa-times"></i>EXCLUIR</a
                 >
-               
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <hr>
+    <hr />
     <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/bootstrap.min.js"></script>

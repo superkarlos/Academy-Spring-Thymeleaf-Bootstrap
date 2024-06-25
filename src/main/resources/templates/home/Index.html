@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Academy</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academy</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 
-
-  <style>
- 
-
-  </style>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
 
-  <body>
-    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+<style>
 
-    <hr />
 
-    <main>
-      <div class="main">
-        <section class="titulo">
-          <h1>Sistema de Cadastro de aluno</h1>
-        </section>
-        <section class="btns">
-          <a th:href="@{/inserirAlunos}"><h5>CADASTRAR ALUNO</h5></a>
-          <a th:href="@{/filtro}"><h5>ALUNOS NO SISTEMA</h5></a>
-        </section>
-     
-      </div>
-   
-    </main>
-    <hr />
-    <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
-  
+</style>
 
-    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
-  </body>
+
+<body>
+  <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+
+  <hr />
+
+  <main>
+    <div class="main">
+      <section class="titulo">
+        <h1>Sistema de Cadastro de aluno</h1>
+      </section>
+      <section class="btns">
+        <a th:href="@{/inserirAlunos}">
+          <h5>CADASTRAR ALUNO</h5>
+        </a>
+        <a th:href="@{/filtro}">
+          <h5>ALUNOS NO SISTEMA</h5>
+        </a>
+      </section>
+
+    </div>
+
+  </main>
+  <hr />
+  <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
+
+
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+</body>
+
 </html>

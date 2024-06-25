@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alunos Ativos</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <style>
-    h3 {
-      text-align: center;
-    }
-    .edit {
-      margin-top: 10px;
-      width: 100%;
-    }
-    .concluir {
-      margin: 20px auto;
-      display: flex;
-      justify-content: center;
-      width: 50%;
-      gap: 10%;
-    }
-    .add-bnt1 {
-      border-color: chartreuse;
-      color: chartreuse;
-    }
-    .add-bnt1:hover {
-      background-color: chartreuse;
-      color: rgb(0, 0, 0);
-    }
-    .add-bnt2 {
-      border-color: rgb(255, 0, 0);
-      color: rgb(255, 0, 0);
-    }
-    .add-bnt2:hover {
-      background-color: rgb(255, 0, 0);
-      color: rgb(0, 0, 0);
-    }
-    .thead {
-      position: sticky;
-      top: 0;
-      background-color: #ff0000;
-    }
 
-    .tabela {
-      height: 600px;
-      overflow-y: scroll;
-    }
-  </style>
-  <body>
-    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alunos Ativos</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<style>
+  h3 {
+    text-align: center;
+  }
+
+  .edit {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .concluir {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    gap: 10%;
+  }
+
+  .add-bnt1 {
+    border-color: chartreuse;
+    color: chartreuse;
+  }
+
+  .add-bnt1:hover {
+    background-color: chartreuse;
+    color: rgb(0, 0, 0);
+  }
+
+  .add-bnt2 {
+    border-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+  }
+
+  .add-bnt2:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+  }
+
+  .thead {
+    position: sticky;
+    top: 0;
+    background-color: #ff0000;
+  }
+
+  .tabela {
+    height: 600px;
+    overflow-y: scroll;
+  }
+</style>
+
+<body>
+  <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+  <hr />
+
+  <div class="container">
+    <h3>ALUNOS ATIVOS NO SISTEMA</h3>
     <hr />
 
-    <div class="container">
-      <h3>ALUNOS ATIVOS NO SISTEMA</h3>
-      <hr />
+    <div class="tabela">
+      <table class="table table-bordered table-hover tabela">
+        <thead class="thead">
+          <th scope="col">NOME</th>
+          <th scope="col">CURSO</th>
+          <th scope="col">MATRICULA</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">id</th>
+          <th scope="col">MODIFICAR</th>
 
-      <div class="tabela">
-        <table class="table table-bordered table-hover tabela">
-          <thead class="thead">
-            <th scope="col">NOME</th>
-            <th scope="col">CURSO</th>
-            <th scope="col">MATRICULA</th>
-            <th scope="col">STATUS</th>
-            <th scope="col">id</th>
-            <th scope="col">MODIFICAR</th>
-      
-          </thead>
-          <tbody>
-            <tr scope="row" th:each="aluno : ${lista_alunos}">
-              <td th:text="${aluno.nome}"></td>
-              <td th:text="${aluno.curso}"></td>
-              <td th:text="${aluno.matricula}"></td>
-              <td th:text="${aluno.status}"></td>
-              <td th:text="${aluno.id}"></td>
+        </thead>
+        <tbody>
+          <tr scope="row" th:each="aluno : ${lista_alunos}">
+            <td th:text="${aluno.nome}"></td>
+            <td th:text="${aluno.curso}"></td>
+            <td th:text="${aluno.matricula}"></td>
+            <td th:text="${aluno.status}"></td>
+            <td th:text="${aluno.id}"></td>
 
-              <td>
-                <a
-                  th:href="@{alterar/{id}(id=${aluno.id})}"
-                  class="btn btn-primary"
-                >
-                  <i class="fas fa-edit"></i> EDITAR</a
-                >
-                <a
-                  th:href="@{excluir/{id}(id=${aluno.id})}"
-                  class="btn btn-danger"
-                >
-                  <i class="fas fa-times"></i>EXCLUIR</a
-                >
-               
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <td>
+              <a th:href="@{alterar/{id}(id=${aluno.id})}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> EDITAR</a>
+              <a th:href="@{excluir/{id}(id=${aluno.id})}" class="btn btn-danger">
+                <i class="fas fa-times"></i>EXCLUIR</a>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <hr>
-    <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
-    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
-  </body>
+  </div>
+  <hr>
+  <footer th:replace="fragmentos_001/fragmentos :: footer"></footer>
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+</body>
+
 </html>

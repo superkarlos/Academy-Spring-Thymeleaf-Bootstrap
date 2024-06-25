@@ -1,170 +1,181 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encontrar Alunos</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <style>
-    h3 {
-      text-align: center;
-    }
-    .edit {
-      margin-top: 10px;
-      width: 100%;
-    }
-    .concluir {
-      margin: 20px auto;
-      display: flex;
-      justify-content: center;
-      width: 50%;
-      gap: 10%;
-    }
-    .add-bnt1 {
-      border-color: chartreuse;
-      color: chartreuse;
-    }
-    .add-bnt1:hover {
-      background-color: chartreuse;
-      color: rgb(0, 0, 0);
-    }
-    .add-bnt2 {
-      border-color: rgb(255, 0, 0);
-      color: rgb(255, 0, 0);
-    }
-    .add-bnt2:hover {
-      background-color: rgb(255, 0, 0);
-      color: rgb(0, 0, 0);
-    }
-    .thead {
-      position: sticky;
-      top: 0;
-      background-color: #ff0000;
-    }
 
-    .tabela {
-      height: 600px;
-      overflow-y: scroll;
-    }
-    .alunos {
-      padding: 40px;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-    .card {
-      padding: 3px;
-    }
-    .card-img-top {
-      padding: 10px;
-    }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encontrar Alunos</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<style>
+  h3 {
+    text-align: center;
+  }
 
-    input[type="text"] {
-      width: 600px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+  .edit {
+    margin-top: 10px;
+    width: 100%;
+  }
 
-    .add-bnt01 {
-      margin-left: 10px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+  .concluir {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    gap: 10%;
+  }
 
-    .add-bnt01:hover {
-      background-color: #0056b3;
-    }
-    .ajustes {
-      margin-left: 25%;
-    }
-  </style>
-  <body>
-    <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+  .add-bnt1 {
+    border-color: chartreuse;
+    color: chartreuse;
+  }
+
+  .add-bnt1:hover {
+    background-color: chartreuse;
+    color: rgb(0, 0, 0);
+  }
+
+  .add-bnt2 {
+    border-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+  }
+
+  .add-bnt2:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+  }
+
+  .thead {
+    position: sticky;
+    top: 0;
+    background-color: #ff0000;
+  }
+
+  .tabela {
+    height: 600px;
+    overflow-y: scroll;
+  }
+
+  .alunos {
+    padding: 40px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    padding: 3px;
+  }
+
+  .card-img-top {
+    padding: 10px;
+  }
+
+  input[type="text"] {
+    width: 600px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .add-bnt01 {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .add-bnt01:hover {
+    background-color: #0056b3;
+  }
+
+  .ajustes {
+    margin-left: 25%;
+  }
+</style>
+
+<body>
+  <header th:replace="/fragmentos_001/fragmentos :: cabecario"></header>
+  <hr />
+
+  <div class="container">
+    <h3>Encontrar alunos</h3>
+
+    <hr />
+    <div class="ajustes">
+      <form method="post" th:action="@{/encontrar}" id="meuForm">
+        <input type="text" th:name="nome" placeholder="Digite o nome ou sobrenome do aluno" required id="nome"
+          minlength="1">
+        <button type="submit" class="add-bnt01">pesquisar</button>
+      </form>
+    </div>
+
     <hr />
 
-    <div class="container">
-      <h3>Encontrar alunos</h3>
-
-      <hr />
-      <div class="ajustes">
-        <form method="post" th:action="@{/encontrar}" id="meuForm">
-          <input type="text"  th:name="nome" placeholder="Digite o nome ou sobrenome do aluno" required id="nome"  minlength="1">
-          <button type="submit" class="add-bnt01">pesquisar</button>
-        </form>
+    <div class="row alunos">
+      <div class="card" style="width: 288px">
+        <a th:href="@{/ativos}">
+          <img class="card-img-top" alt="" src="/img/alunosativos.jpeg" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Alunos ativos no sistema</h5>
+          <p class="card-text">Busque aqui os alunos</p>
+          <a th:href="@{/ativos}" class="btn btn-outline-primary">Ativos</a>
+        </div>
       </div>
 
-      <hr />
-
-      <div class="row alunos">
-        <div class="card" style="width: 288px">
-          <a th:href="@{/ativos}">
-            <img class="card-img-top" alt="" src="/img/alunosativos.jpeg" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Alunos ativos no sistema</h5>
-            <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/ativos}" class="btn btn-outline-primary">Ativos</a>
-          </div>
+      <div class="card" style="width: 288px">
+        <a th:href="@{/inativos}">
+          <img class="card-img-top" alt="" src="/img/alunosinativos.jpeg" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Alunos inativos no sistema</h5>
+          <p class="card-text">Busque aqui os alunos</p>
+          <a th:href="@{/inativos}" class="btn btn-outline-primary">
+            Inativos</a>
         </div>
-
-        <div class="card" style="width: 288px">
-          <a th:href="@{/inativos}">
-            <img class="card-img-top" alt="" src="/img/alunosinativos.jpeg" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Alunos inativos no sistema</h5>
-            <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/inativos}" class="btn btn-outline-primary">
-              Inativos</a
-            >
-          </div>
+      </div>
+      <div class="card" style="width: 288px">
+        <a th:href="@{/cancelados}">
+          <img class="card-img-top" alt="" src="/img/alunoscancelados.jpeg" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Cancelados no Sistema</h5>
+          <p class="card-text">Busque aqui os alunos</p>
+          <a th:href="@{/cancelados}" class="btn btn-outline-primary">Cancelados</a>
         </div>
-        <div class="card" style="width: 288px">
-          <a th:href="@{/cancelados}">
-            <img class="card-img-top" alt="" src="/img/alunoscancelados.jpeg" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Cancelados no Sistema</h5>
-            <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/cancelados}" class="btn btn-outline-primary"
-              >Cancelados</a
-            >
-          </div>
-        </div>
+      </div>
 
-        <div class="card" style="width: 288px">
-          <a th:href="@{/trancados}">
-            <img class="card-img-top" alt="" src="/img/alunostrancados.jpeg" />
+      <div class="card" style="width: 288px">
+        <a th:href="@{/trancados}">
+          <img class="card-img-top" alt="" src="/img/alunostrancados.jpeg" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Trancados no sistema</h5>
+          <p class="card-text">Busque aqui os alunos</p>
+          <a th:href="@{/trancados}" class="btn btn-outline-primary">Trancados
           </a>
-          <div class="card-body">
-            <h5 class="card-title">Trancados no sistema</h5>
-            <p class="card-text">Busque aqui os alunos</p>
-            <a th:href="@{/trancados}" class="btn btn-outline-primary"
-              >Trancados
-            </a>
-          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/bootstrap.min.js"></script>
-    <script>
-      document.getElementById('meuForm').addEventListener('submit', function(event) {
-        var nome = document.getElementById('nome').value;
-     
-      
-        if (nome.trim() === '') {
-          event.preventDefault();
-          alert('Por favor, preencha os campos sem espaços em branco.');
-        }
-      });
-      </script>
-  </body>
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/bootstrap.min.js"></script>
+  <script>
+    document.getElementById('meuForm').addEventListener('submit', function (event) {
+      var nome = document.getElementById('nome').value;
+
+
+      if (nome.trim() === '') {
+        event.preventDefault();
+        alert('Por favor, preencha os campos sem espaços em branco.');
+      }
+    });
+  </script>
+</body>
+
 </html>
